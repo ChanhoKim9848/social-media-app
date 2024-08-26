@@ -11,9 +11,12 @@ import { redirect } from "next/navigation";
 export async function login(
   credentials: LoginValue,
 ): Promise<{ error: string }> {
+
+    // username and password from login schema and parse into credentials
   try {
     const { username, password } = loginSchema.parse(credentials);
 
+    // checks if user exists
     const existingUser = await prisma.user.findFirst({
       where: {
         username: {
@@ -23,12 +26,14 @@ export async function login(
       },
     });
 
+    // if user does not exist
     if (!existingUser || !existingUser.passwordHash) {
       return {
         error: "Incorrect username or password",
       };
     }
 
+    // check hashed password
     const validPassword = await verify(existingUser.passwordHash, password, {
       memoryCost: 19456,
       timeCost: 2,
@@ -36,12 +41,14 @@ export async function login(
       parallelism: 1,
     });
 
+    // if password is incorrect
     if (!validPassword) {
       return {
         error: "Incorrect username or password",
       };
     }
 
+    // login, create session and cookie
     const session = await lucia.createSession(existingUser.id, {});
     const sessionCookie = lucia.createSessionCookie(session.id);
     cookies().set(
@@ -50,8 +57,11 @@ export async function login(
       sessionCookie.attributes,
     );
 
+    // page goes to homepage
     return redirect("/")
   } catch (error) {
+
+    // if error occurs
     if (isRedirectError(error)) throw error;
     console.error(error);
     return {
