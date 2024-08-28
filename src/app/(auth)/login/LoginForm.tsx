@@ -1,8 +1,10 @@
 "use client";
 
-import { signUpSchema, SignUpValues } from "@/lib/validation";
-import { useForm } from "react-hook-form";
+import { loginSchema, LoginValue } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { login } from "./actions";
 import {
   Form,
   FormControl,
@@ -12,34 +14,26 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useState, useTransition } from "react";
-import { signUp } from "./actions";
 import { PasswordInput } from "@/components/PasswordInput";
 import LoadingButton from "@/components/LoadingButton";
 
-// sign up form
-export default function SignUpForm() {
+export default function LoginForm() {
   const [error, setError] = useState<string>();
-
   const [isPending, startTransition] = useTransition();
-
-  const form = useForm<SignUpValues>({
-    resolver: zodResolver(signUpSchema),
+  const form = useForm<LoginValue>({
+    // login with username and password
+    resolver: zodResolver(loginSchema),
     defaultValues: {
-      email: "",
       username: "",
       password: "",
     },
   });
 
-  //   sign up on submit function
-  async function onSubmit(values: SignUpValues) {
-    // first error state to undefined
+  async function onSubmit(values: LoginValue) {
     setError(undefined);
     startTransition(async () => {
-      const { error } = await signUp(values);
-      // if sign up error, set state to error
+      // if login values have error, set state to error
+      const { error } = await login(values);
       if (error) setError(error);
     });
   }
@@ -57,19 +51,6 @@ export default function SignUpForm() {
               <FormLabel>Username</FormLabel>
               <FormControl>
                 <Input placeholder="Username" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" type="email" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
