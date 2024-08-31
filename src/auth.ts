@@ -1,8 +1,8 @@
 import { PrismaAdapter } from "@lucia-auth/adapter-prisma";
-import prisma from "./lib/prisma";
 import { Lucia, Session, User } from "lucia";
-import { cache } from "react";
 import { cookies } from "next/headers";
+import { cache } from "react";
+import prisma from "./lib/prisma";
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -13,9 +13,6 @@ export const lucia = new Lucia(adapter, {
       secure: process.env.NODE_ENV === "production",
     },
   },
-
-  // everytime we fetch our session on the frontend,
-  //  we automatically get passed with this field
   getUserAttributes(databaseUserAttributes) {
     return {
       id: databaseUserAttributes.id,
@@ -27,24 +24,14 @@ export const lucia = new Lucia(adapter, {
   },
 });
 
-// define session
-// Defining custom session attributes requires 2 steps.
-// First, add the required columns to the session table.
-// You can type it by declaring the Register.DatabaseSessionAttributes type.
 declare module "lucia" {
-  // register
   interface Register {
-    lucia: typeof lucia;
-    DatabaseUserAttributes: databaseUserAttributes;
+    Lucia: typeof lucia;
+    DatabaseUserAttributes: DatabaseUserAttributes;
   }
 }
 
-// user data field
-//Create a DatabaseUserAttributes interface in the module declaration
-//and add your database columns.
-// By default, Lucia will not expose any database columns to the User type.
-// To add a username field to it, use the getUserAttributes() option.
-interface databaseUserAttributes {
+interface DatabaseUserAttributes {
   id: string;
   username: string;
   displayName: string;

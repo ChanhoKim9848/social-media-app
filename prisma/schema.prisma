@@ -14,8 +14,6 @@ model User {
   id           String    @id
   username     String    @unique
   displayName  String 
-
-  // ? means optional depending on using google authentication
   email        String? @unique
   passwordHash String?
   googleId     String? @unique
@@ -33,7 +31,7 @@ model Session{
   userId        String
   expiresAt     DateTime
   // delete session after
-  User          User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user          User  @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }
