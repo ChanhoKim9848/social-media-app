@@ -27,3 +27,11 @@ export function formatRelativeDate(from: Date) {
     }
   }
 }
+
+// function that formats the big number for hashtag counts
+export function formatNumber(n: number): string {
+  return Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(n);
+}

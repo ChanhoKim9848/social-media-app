@@ -9,5 +9,6 @@
 ##### [Navigation and search Bar, user button dropdown menu - 31/08/24](https://blog.naver.com/detol3953/223567962241)
 ##### [Dark mode, Responsive side bar - 01/09/24](https://blog.naver.com/detol3953/223568849350)
 ##### [User posts, post layout - 05/09/24](https://blog.naver.com/detol3953/223573683943)
+##### [Sidebar: Trending posts (hashtags), follow suggestion - 05/09/24](https://blog.naver.com/detol3953/223573925470)
 
-https://youtu.be/TyV12oBDsYI?t=14967
+https://youtu.be/TyV12oBDsYI?t=16605
