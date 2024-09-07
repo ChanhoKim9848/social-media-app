@@ -116,7 +116,7 @@ async function TrendingTopics() {
             <p className="text-sm text-muted-foreground">
               {formatNumber(count)}
               {/* plural or singular form of post by the number of count */}
-              {count === 1 ? "post" : "posts"}
+              {count === 1 ? " post" : " posts"}
             </p>
           </Link>
         );
