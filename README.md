@@ -10,5 +10,6 @@
 ##### [Dark mode, Responsive side bar - 01/09/24](https://blog.naver.com/detol3953/223568849350)
 ##### [User posts, post layout - 05/09/24](https://blog.naver.com/detol3953/223573683943)
 ##### [Sidebar: Trending posts (hashtags), follow suggestion - 05/09/24](https://blog.naver.com/detol3953/223573925470)
+##### [Loading new feeds, posts skeleton - 08/09/24](https://blog.naver.com/detol3953/223577203758)
 
-https://youtu.be/TyV12oBDsYI?t=16868
+https://youtu.be/TyV12oBDsYI?list=LL&t=19346

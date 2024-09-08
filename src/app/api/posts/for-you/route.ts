@@ -6,6 +6,7 @@ import { NextRequest } from "next/server";
 // GET endpoint for the server
 export async function GET(req: NextRequest) {
   try {
+
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
 
     const pageSize = 10;
