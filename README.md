@@ -12,5 +12,7 @@
 ##### [Sidebar: Trending posts (hashtags), follow suggestion - 05/09/24](https://blog.naver.com/detol3953/223573925470)
 ##### [Loading new feeds, posts skeleton - 08/09/24](https://blog.naver.com/detol3953/223577203758)
 ##### [feed update function - (react query cache mutation) - 09/09/24](https://blog.naver.com/detol3953/223577476189)
+##### [Delete post - 09/09/24](https://blog.naver.com/detol3953/223578370018)
 
-https://youtu.be/TyV12oBDsYI?t=20452
+
+https://youtu.be/TyV12oBDsYI?t=22124
