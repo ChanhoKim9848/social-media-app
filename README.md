@@ -11,5 +11,6 @@
 ##### [User posts, post layout - 05/09/24](https://blog.naver.com/detol3953/223573683943)
 ##### [Sidebar: Trending posts (hashtags), follow suggestion - 05/09/24](https://blog.naver.com/detol3953/223573925470)
 ##### [Loading new feeds, posts skeleton - 08/09/24](https://blog.naver.com/detol3953/223577203758)
+##### [feed update function - (react query cache mutation) - 09/09/24](https://blog.naver.com/detol3953/223577476189)
 
-https://youtu.be/TyV12oBDsYI?list=LL&t=19346
+https://youtu.be/TyV12oBDsYI?t=20452
