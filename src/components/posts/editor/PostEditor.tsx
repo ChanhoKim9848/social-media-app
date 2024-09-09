@@ -3,17 +3,18 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Placeholder from "@tiptap/extension-placeholder";
-import { submitPost } from "./actions";
 import UserAvatar from "@/components/UserAvatar";
 import { useSession } from "@/app/(main)/SessionProvider";
-import { Button } from "@/components/ui/button";
-import "./style.css"
-
+import "./style.css";
+import { useSubmitPostMutation } from "./mutations";
+import LoadingButton from "@/components/LoadingButton";
 
 // post editor function
 export default function PostEditor() {
   // find the logged in user
   const { user } = useSession();
+
+  const mutation = useSubmitPostMutation();
 
   // user editor
   const editor = useEditor({
@@ -36,7 +37,11 @@ export default function PostEditor() {
 
   // submit post function
   async function onSubmit() {
-    await submitPost(input);
+    mutation.mutate(input, {
+      onSuccess: () => {
+        editor?.commands.clearContent();
+      },
+    });
     editor?.commands.clearContent();
   }
 
@@ -45,19 +50,20 @@ export default function PostEditor() {
     <div className="flex flex-col gap-5 rounded-2xl bg-card p-5 shadow-sm">
       <div className="flex gap-5">
         <UserAvatar avatarUrl={user.avatarUrl} className="hidden sm:inline" />
-        <EditorContent 
-        editor={editor}
-        className="w-full max-h-[20rem] overflow-y-auto bg-background rounded-2xl px-5 py-3"
+        <EditorContent
+          editor={editor}
+          className="max-h-[20rem] w-full overflow-y-auto rounded-2xl bg-background px-5 py-3"
         />
       </div>
       <div className="flex justify-end">
-        <Button
-        onClick={onSubmit}
-        disabled={!input.trim()}
-        className="min-w-20"
+        <LoadingButton
+          onClick={onSubmit}
+          loading={mutation.isPending}
+          disabled={!input.trim()}
+          className="min-w-20"
         >
           Post
-        </Button>
+        </LoadingButton>
       </div>
     </div>
   );
