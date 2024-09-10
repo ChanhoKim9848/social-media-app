@@ -13,6 +13,6 @@
 ##### [Loading new feeds, posts skeleton - 08/09/24](https://blog.naver.com/detol3953/223577203758)
 ##### [feed update function - (react query cache mutation) - 09/09/24](https://blog.naver.com/detol3953/223577476189)
 ##### [Delete post - 09/09/24](https://blog.naver.com/detol3953/223578370018)
-
+##### [Follow / Unfollow function - 10/09/24](https://blog.naver.com/detol3953/223579911865)
 
 https://youtu.be/TyV12oBDsYI?t=22124
