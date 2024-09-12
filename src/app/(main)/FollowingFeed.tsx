@@ -8,8 +8,8 @@ import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
-// functions that shows all the posts (my posts and other users)
-export default function ForYouFeed() {
+// functions that shows following users' posts on the feed
+export default function FollowingFeed() {
   const {
     data,
     fetchNextPage,
@@ -20,13 +20,13 @@ export default function ForYouFeed() {
 
     // infinite query to fetch new posts whenever user scrolls down and reaches the bottom
   } = useInfiniteQuery({
-    // fetch data with query keys (following api to get all the posts displayed on the for-you feed)
-    queryKey: ["post-feed", "for-you"],
+    queryKey: ["post-feed", "following"],
 
+    // fetch data with query keys (following api to get following users' posts)
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          "/api/posts/following",
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
@@ -45,7 +45,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No one has posted anything yet
+        No post found. Start following people to see their posts here.
       </p>
     );
   }

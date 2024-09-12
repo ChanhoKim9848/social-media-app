@@ -8,8 +8,12 @@ import { PostsPage } from "@/lib/types";
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
+interface UserPostsProps {
+  userId: string;
+}
+
 // functions that shows all the posts (my posts and other users)
-export default function ForYouFeed() {
+export default function UserPosts({ userId }: UserPostsProps) {
   const {
     data,
     fetchNextPage,
@@ -20,13 +24,14 @@ export default function ForYouFeed() {
 
     // infinite query to fetch new posts whenever user scrolls down and reaches the bottom
   } = useInfiniteQuery({
-    // fetch data with query keys (following api to get all the posts displayed on the for-you feed)
-    queryKey: ["post-feed", "for-you"],
+    // since we are different user, we need user Id as a key to be part of query
+    queryKey: ["post-feed", "user-posts", userId],
 
+    // fetch the data with query keys to get posts displayed on the feed in user's profile page
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          `/api/users/${userId}/posts`,
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
@@ -45,7 +50,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No one has posted anything yet
+        This user has not posted anything yet.
       </p>
     );
   }
