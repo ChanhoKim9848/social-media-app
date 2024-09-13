@@ -24,10 +24,9 @@ export default function UserPosts({ userId }: UserPostsProps) {
 
     // infinite query to fetch new posts whenever user scrolls down and reaches the bottom
   } = useInfiniteQuery({
-    // since we are different user, we need user Id as a key to be part of query
+    // fetch data with query keys (following api to get all the posts displayed on the for-you feed)
     queryKey: ["post-feed", "user-posts", userId],
 
-    // fetch the data with query keys to get posts displayed on the feed in user's profile page
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
@@ -50,7 +49,7 @@ export default function UserPosts({ userId }: UserPostsProps) {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        This user has not posted anything yet.
+        This user has not posted anything yet
       </p>
     );
   }

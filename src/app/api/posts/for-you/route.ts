@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import {  getPostDataInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
-// API GET request to get posts data for for-you feed
+// API GET request to get posts data on for-you feed
 export async function GET(req: NextRequest) {
   try {
 

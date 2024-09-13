@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import { getPostDataInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
+// GET request to get user data
 export async function GET(
   req: NextRequest,
   { params: { userId } }: { params: { userId: string } },
@@ -13,7 +14,6 @@ export async function GET(
     const pageSize = 10;
 
     const { user } = await validateRequest();
-
     if (!user) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -35,7 +35,7 @@ export async function GET(
 
     return Response.json(data);
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }

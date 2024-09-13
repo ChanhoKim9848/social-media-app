@@ -100,7 +100,7 @@ const getTrendingTopics = unstable_cache(
   },
   ["trending_topics"],
   {
-    // the variable of the time that gets trending topics every revalidate hour (secs)
+    // the variable of the time that gets trending topics every revalidate secs
     revalidate: 60,
   },
 );

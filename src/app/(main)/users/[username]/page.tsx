@@ -17,7 +17,6 @@ interface PageProps {
   params: { username: string };
 }
 
-// get user data from db
 const getUser = cache(async (username: string, loggedInUserId: string) => {
   const user = await prisma.user.findFirst({
     where: {
@@ -28,73 +27,62 @@ const getUser = cache(async (username: string, loggedInUserId: string) => {
     },
     select: getUserDataSelect(loggedInUserId),
   });
-  //   if user not found, return user
   if (!user) notFound();
+
   return user;
 });
 
-// function generates metadata of the user
 export async function generateMetadata({
   params: { username },
 }: PageProps): Promise<Metadata> {
-  // get currently logged-in user's data
-  const { user: loggedInUser } = await validateRequest();
+  const { user: loggedInUserId } = await validateRequest();
 
-  //   if user is not logged in, return nothing
-  if (!loggedInUser) return {};
+  if (!loggedInUserId) return {};
 
-  const user = await getUser(username, loggedInUser.id);
-
-  //   return display name of the user
+  const user = await getUser(username, loggedInUserId.id);
   return {
-    title: `${user.displayName}(@${user.username})`,
+    title: `${user.displayName} (@${user.username})`,
   };
 }
 
-// page of the user profile and layout
 export default async function Page({ params: { username } }: PageProps) {
-  const { user: loggedInUser } = await validateRequest();
+  const { user: loggedInUserId } = await validateRequest();
 
-  //   if user is not logged in, the text below will be displayed
-  if (!loggedInUser) {
+  if (!loggedInUserId) {
     return (
       <p className="text-destructive">
-        You&apos;are not authorized to view this page
+        You are not authorized to view this page
       </p>
     );
   }
-  // get user data with username and logged in user
-  const user = await getUser(username, loggedInUser.id);
-  // layout and rendering pages
+
+  const user = await getUser(username, loggedInUserId.id);
+
   return (
     <main className="flex w-full min-w-0 gap-5">
       <div className="w-full min-w-0 space-y-5">
-        <UserProfile user={user} loggedInUserId={loggedInUser.id} />
+        <UserProfile user={user} loggedInUserId={loggedInUserId.id} />
         <div className="rounded-2xl bg-card p-5 shadow-sm">
           <h2 className="text-center text-2xl font-bold">
-            {user.displayName}&apos;s posts
-            </h2> 
+            {user.displayName}&apos;s posts{" "}
+          </h2>
         </div>
-        <UserPosts userId={user.id}/>
+        <UserPosts userId={user.id} />
       </div>
       <TrendsSidebar />
     </main>
   );
 }
 
-// get user data which only has the number of posts and followers
 interface UserProfileProps {
   user: UserData;
   loggedInUserId: string;
 }
 
-// user profile data and layout
 async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
   const followerInfo: FollowerInfo = {
-    // user profile shows the followers number and
     followers: user._count.followers,
     isFollowedByUser: user.followers.some(
-      // checks if logged-in user is following the user of the profile
       ({ followerId }) => followerId === loggedInUserId,
     ),
   };
@@ -109,34 +97,31 @@ async function UserProfile({ user, loggedInUserId }: UserProfileProps) {
         <div className="me-auto space-y-3">
           <div>
             <h1 className="text-3xl font-bold">{user.displayName}</h1>
-            <div className="text-muted-foreground">@{user.username} </div>
+            <div className="text-muted-foreground">@{user.username}</div>
           </div>
           {/* member date format */}
           <div>
             Member since:&nbsp;&nbsp;
             <span className="font-thin">
               {formatDate(user.createdAt, "d MMM, yyyy")}
+              <div className="flex items-center gap-3">
+                <span>
+                  Posts:{" "}
+                  <span className="font-semibold">
+                    {formatNumber(user._count.posts)}
+                  </span>
+                </span>
+                <FollowerCount userId={user.id} initialState={followerInfo} />
+              </div>
             </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span>
-              Posts:{" "}
-              <span className="font-semibold">
-                {formatNumber(user._count.posts)}
-              </span>
-            </span>
-            <FollowerCount userId={user.id} initialState={followerInfo} />
           </div>
         </div>
-        {/* Edit profile button */}
-        {/* if profile user is same as logged in user */}
         {user.id === loggedInUserId ? (
           <Button>Edit Profile</Button>
         ) : (
           <FollowButton userId={user.id} initialState={followerInfo} />
         )}
       </div>
-      {/* optional user biography */}
       {user.bio && (
         <>
           <hr />
