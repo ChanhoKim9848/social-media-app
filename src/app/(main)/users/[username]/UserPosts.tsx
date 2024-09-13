@@ -12,7 +12,7 @@ interface UserPostsProps {
   userId: string;
 }
 
-// functions that shows all the posts (my posts and other users)
+// functions that shows posts on the profile page
 export default function UserPosts({ userId }: UserPostsProps) {
   const {
     data,
