@@ -17,5 +17,6 @@
 ##### [User profile page (layout, not-found page, the functionalities) - 13/09/24](https://blog.naver.com/detol3953/223583571898)
 ##### [User tooltip, React linkify - 14/09/24](https://blog.naver.com/detol3953/223584369716)
 ##### [Edit profile (Crop image, upload image) - 15/09/24](https://blog.naver.com/detol3953/223585524143)
+##### [Post image and videos - 16/09/24](https://blog.naver.com/detol3953/223586332662)
 
-https://youtu.be/1nKETjqJluI?t=6085
+https://youtu.be/1nKETjqJluI?t=10673
