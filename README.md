@@ -18,5 +18,6 @@
 ##### [User tooltip, React linkify - 14/09/24](https://blog.naver.com/detol3953/223584369716)
 ##### [Edit profile (Crop image, upload image) - 15/09/24](https://blog.naver.com/detol3953/223585524143)
 ##### [Post image and videos - 16/09/24](https://blog.naver.com/detol3953/223586332662)
+##### [Post detail page - 18/09/24](https://blog.naver.com/detol3953/223587728637)
 
-https://youtu.be/1nKETjqJluI?t=10673
+https://youtu.be/1nKETjqJluI?t=11557

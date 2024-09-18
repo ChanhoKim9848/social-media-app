@@ -44,6 +44,8 @@ export default function Post({ post }: PostProps) {
               // get post id
               href={`/posts/${post.id}`}
               className="block text-sm text-muted-foreground hover:underline"
+              // to get rid of error when we render something in server component
+              suppressHydrationWarning
             >
               {/* shows date of post created */}
               {formatRelativeDate(post.createdAt)}

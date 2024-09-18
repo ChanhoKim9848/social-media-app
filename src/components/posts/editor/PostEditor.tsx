@@ -224,7 +224,7 @@ function AttachmentPreview({
         />
       ) : (
         <video controls className="roudned-2xl size-fit max-h-[30rem]">
-          <source src={src} type={file.type} />
+          <source src={src} type={file.type}/>
         </video>
       )}
       {!isUploading && (
