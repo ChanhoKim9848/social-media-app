@@ -17,9 +17,9 @@ export default function FollowButton({
   userId,
   initialState,
 }: FollowButtonProps) {
+
   // toast message function
   const { toast } = useToast();
-
   // get query 
   const queryClient = useQueryClient();
   // get user data
@@ -35,7 +35,6 @@ export default function FollowButton({
         ? kyInstance.delete(`/api/users/${userId}/followers`)
         : kyInstance.post(`/api/users/${userId}/followers`),
     onMutate: async () => {
-      const queryKey: QueryKey = ["follower-info", userId];
 
       await queryClient.cancelQueries({ queryKey });
 

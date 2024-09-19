@@ -5,11 +5,11 @@ import Post from "@/components/posts/Post";
 import PostsLoadingSkeleton from "@/components/PostsLoadingSkeleton";
 import kyInstance from "@/lib/ky";
 import { PostsPage } from "@/lib/types";
-import { useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
-// functions that shows all the posts (my posts and other users)
-export default function ForYouFeed() {
+// functions that shows all the bookmarked posts
+export default function Bookmarks() {
   const {
     data,
     fetchNextPage,
@@ -20,13 +20,13 @@ export default function ForYouFeed() {
 
     // infinite query to fetch new posts whenever user scrolls down and reaches the bottom
   } = useInfiniteQuery({
-    // fetch data with query keys (following api to get all the posts displayed on the for-you feed)
-    queryKey: ["post-feed", "for-you"],
+    // fetch data with query keys (following api to get all the posts displayed on the bookmark feed)
+    queryKey: ["post-feed", "bookmarks"],
 
     queryFn: ({ pageParam }) =>
       kyInstance
         .get(
-          "/api/posts/for-you",
+          "/api/posts/bookmarked",
           pageParam ? { searchParams: { cursor: pageParam } } : {},
         )
         .json<PostsPage>(),
@@ -45,7 +45,7 @@ export default function ForYouFeed() {
   if (status === "success" && !posts.length && !hasNextPage) {
     return (
       <p className="text-center text-muted-foreground">
-        No one has posted anything yet.
+        You do not have any bookmarks yet.
       </p>
     );
   }
@@ -53,7 +53,7 @@ export default function ForYouFeed() {
   if (status === "error") {
     return (
       <p className="text-center text-destructive">
-        An error occurred while loading posts.
+        An error occurred while loading bookmarks.
       </p>
     );
   }

@@ -3,43 +3,42 @@ import prisma from "@/lib/prisma";
 import { getPostDataInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
-// GET request to get user's posts data
-export async function GET(
-  req: NextRequest,
-  { params: { userId } }: { params: { userId: string } },
-) {
+// API GET request to get bookmark data from db and fetch on bookmark page
+export async function GET(req: NextRequest) {
   try {
-    // get cursor
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
 
-    // page size maximum
     const pageSize = 10;
 
     const { user } = await validateRequest();
-
-    // if user does not exist, error
     if (!user) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // get posts data from db by user id
-    const posts = await prisma.post.findMany({
-      where: { userId },
-      include: getPostDataInclude(user.id),
-      orderBy: { createdAt: "desc" },
+    const bookmarks = await prisma.bookmark.findMany({
+      where: {
+        userId: user.id,
+      },
+      include: {
+        post: {
+          include: getPostDataInclude(user.id),
+        },
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
       take: pageSize + 1,
       cursor: cursor ? { id: cursor } : undefined,
     });
 
-    const nextCursor = posts.length > pageSize ? posts[pageSize].id : null;
+    const nextCursor = bookmarks.length > pageSize ? bookmarks[pageSize].id : null;
 
     const data: PostsPage = {
-      posts: posts.slice(0, pageSize),
+      posts: bookmarks.slice(0, pageSize).map(bookmark=>bookmark.post),
       nextCursor,
     };
 
     return Response.json(data);
-    // error handle
   } catch (error) {
     console.log(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });

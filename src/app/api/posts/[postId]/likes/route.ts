@@ -1,11 +1,11 @@
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { FollowerInfo } from "@/lib/types";
+import { LikeInfo } from "@/lib/types";
 
-// GET request to get followers data
+// GET request to get the post's likes data
 export async function GET(
   req: Request,
-  { params: { userId } }: { params: { userId: string } },
+  { params: { postId } }: { params: { postId: string } },
 ) {
   try {
     // check if user is logged in
@@ -16,100 +16,102 @@ export async function GET(
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // end point where we can fetch the current follower information
-    const user = await prisma.user.findUnique({
-      where: { id: userId },
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
       select: {
-        followers: {
+        likes: {
           where: {
-            followerId: loggedInUser.id,
+            userId: loggedInUser.id,
           },
           select: {
-            followerId: true,
+            userId: true,
           },
         },
         _count: {
           select: {
-            followers: true,
+            likes: true,
           },
         },
       },
     });
 
-    // if user does not exist, user not found error
-    if (!user) {
-      return Response.json({ error: "User not found" }, { status: 404 });
+    // post does not exist, post not found
+    if (!post) {
+      return Response.json({ error: "Post not found" }, { status: 404 });
     }
 
-    // follower data
-    const data: FollowerInfo = {
-      followers: user._count.followers,
-      isFollowedByUser: !!user.followers.length,
+    const data: LikeInfo = {
+      likes: post._count.likes,
+      isLikedByUser: !!post.likes.length,
     };
 
     return Response.json(data);
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
-// POST request to follow a user
+// POST request to like a post
 export async function POST(
   req: Request,
-  { params: { userId } }: { params: { userId: string } },
+  { params: { postId } }: { params: { postId: string } },
 ) {
   try {
+    // check if user is logged in
     const { user: loggedInUser } = await validateRequest();
 
+    // if user is not logged in, error
     if (!loggedInUser) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
-    await prisma.follow.upsert({
+
+    await prisma.like.upsert({
       where: {
-        // many to many relation, follow other users and
-        followerId_followingId: {
-          followerId: loggedInUser.id,
-          followingId: userId,
+        userId_postId: {
+          userId: loggedInUser.id,
+          postId,
         },
       },
-      // create data in other user's followers list in db
       create: {
-        followerId: loggedInUser.id,
-        followingId: userId,
+        userId: loggedInUser.id,
+        postId,
       },
-      // update user data
       update: {},
     });
-    // success reponse
-    return new Response();
 
-    // error handler
+    return new Response();
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
   }
 }
 
-// DELETE request after unfollow a user
+// DELETE request to unlike
 export async function DELETE(
   req: Request,
-  { params: { userId } }: { params: { userId: string } },
+  { params: { postId } }: { params: { postId: string } },
 ) {
   try {
+    // check if user is logged in
     const { user: loggedInUser } = await validateRequest();
 
+    // if user is not logged in, error
     if (!loggedInUser) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await prisma.follow.deleteMany({
+    // unlike and delete data from db
+    await prisma.like.deleteMany({
       where: {
-        followerId: loggedInUser.id,
-        followingId: userId,
+        userId: loggedInUser.id,
+        postId,
       },
     });
-    return new Response();
+    // success response 
+    return new Response()
+
+    // error handler
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Internal server error" }, { status: 500 });
