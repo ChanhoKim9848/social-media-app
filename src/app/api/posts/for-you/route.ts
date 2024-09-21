@@ -1,17 +1,20 @@
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import {  getPostDataInclude, PostsPage } from "@/lib/types";
+import { getPostDataInclude, PostsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
 // API GET request to get posts data on for-you feed
 export async function GET(req: NextRequest) {
   try {
-
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
 
+    // return the number of page
     const pageSize = 10;
 
+    // authorization check
     const { user } = await validateRequest();
+
+    // user does not eixst, then error
     if (!user) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -27,8 +30,8 @@ export async function GET(req: NextRequest) {
 
     const data: PostsPage = {
       posts: posts.slice(0, pageSize),
-      nextCursor
-    }
+      nextCursor,
+    };
 
     return Response.json(data);
   } catch (error) {

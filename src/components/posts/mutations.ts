@@ -15,6 +15,7 @@ export function useDeletePostMutation() {
   const queryClient = useQueryClient();
 
   const router = useRouter();
+
   const pathname = usePathname();
 
   const mutation = useMutation({
@@ -30,7 +31,7 @@ export function useDeletePostMutation() {
       queryClient.setQueriesData<InfiniteData<PostsPage, string | null>>(
         queryFilter,
         (oldData) => {
-          // feed is empty, we do not delete any post
+          // if old data is null, return nothing
           if (!oldData) return;
 
           // delete post and update the feed after
@@ -44,10 +45,11 @@ export function useDeletePostMutation() {
         },
       );
 
-      // message afte deletion
+      // message after deletion
       toast({
         description: `Post deleted`,
       });
+
       if (pathname === `/posts/${deletedPost.id}`) {
         router.push(`/users/${deletedPost.user.username}`);
       }

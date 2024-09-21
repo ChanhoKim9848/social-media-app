@@ -1,0 +1,46 @@
+import { validateRequest } from "@/auth";
+import prisma from "@/lib/prisma";
+import { CommentsPage, getCommentDataInclude } from "@/lib/types";
+import { NextRequest } from "next/server";
+
+export async function GET(
+  req: NextRequest,
+  { params: { postId } }: { params: { postId: string } },
+) {
+  try {
+    const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
+
+    // return the number of page
+    const pageSize = 5;
+
+    // authorization check
+    const { user } = await validateRequest();
+    // user does not eixst, then error
+    if (!user) {
+      return Response.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const comments = await prisma.comment.findMany({
+      where: { postId },
+      include: getCommentDataInclude(user.id),
+      // sort comments from top to bottom, and oldest to latest
+      orderBy: { createdAt: "asc" },
+      // paginated into opposite direction
+      take: -pageSize - 1,
+
+      cursor: cursor ? { id: cursor } : undefined,
+    });
+
+    const previousCursor = comments.length > pageSize ? comments[0].id : null;
+
+    const data: CommentsPage = {
+      comments: comments.length > pageSize ? comments.slice(1) : comments,
+      previousCursor,
+    };
+
+    return Response.json(data);
+  } catch (error) {
+    console.log(error);
+    return Response.json({ error: "Internal server error" }, { status: 500 });
+  }
+}

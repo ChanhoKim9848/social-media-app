@@ -9,8 +9,10 @@ export async function submitPost(input: {
   content: string;
   mediaIds: string[];
 }) {
+  // authenticated user
   const { user } = await validateRequest();
 
+  // if user does not exist, throw unauthorized
   if (!user) throw Error("Unauthorized");
 
   const { content, mediaIds } = createPostSchema.parse(input);

@@ -12,6 +12,9 @@ import { Media } from "@prisma/client";
 import Image from "next/image";
 import LikeButton from "@/app/api/posts/LikeButton";
 import BookmarkButton from "@/app/api/posts/BookmarkButton";
+import { useState } from "react";
+import { MessageSquare } from "lucide-react";
+import Comments from "../comments/Comments";
 
 interface PostProps {
   post: PostData;
@@ -21,6 +24,11 @@ interface PostProps {
 export default function Post({ post }: PostProps) {
   // get user data from session
   const { user } = useSession();
+
+  // show comments state
+  // if the state is true (comments are toggled),
+  // comments are shown below the post.
+  const [showComments, setShowComments] = useState(false);
 
   return (
     <article className="group/post space-y-3 rounded-2xl bg-card p-5 shadow-sm">
@@ -69,23 +77,30 @@ export default function Post({ post }: PostProps) {
       )}
       <hr className="text-muted-foreground" />
       <div className="flex justify-between gap-5">
-
-      <LikeButton
-        postId={post.id}
-        initialState={{
-          likes: post._count.likes,
-          isLikedByUser: post.likes.some((like) => like.userId === user.id),
-        }}
-        />
-        <BookmarkButton
-        postId={post.id}
-        initialState={{
-          isBookmarkedByUser:post.bookmarks.some(
-            bookmark => bookmark.userId === user.id,
-          )
-        }}
-        />
+        <div className="flex items-center gap-5">
+          <LikeButton
+            postId={post.id}
+            initialState={{
+              likes: post._count.likes,
+              isLikedByUser: post.likes.some((like) => like.userId === user.id),
+            }}
+          />
+          <CommentButton
+            post={post}
+            onClick={() => setShowComments(!showComments)}
+          />
         </div>
+        <BookmarkButton
+          postId={post.id}
+          initialState={{
+            isBookmarkedByUser: post.bookmarks.some(
+              (bookmark) => bookmark.userId === user.id,
+            ),
+          }}
+        />
+      </div>
+          {/* if comments are toggled, show comments */}
+      {showComments && <Comments post={post}/>}
     </article>
   );
 }
@@ -137,4 +152,21 @@ function MediaPreview({ media }: MediaPreviewProps) {
     );
   }
   return <p className="text-destructive">Unsupported media type</p>;
+}
+
+interface CommentButtonProps {
+  post: PostData;
+  onClick: () => void;
+}
+
+function CommentButton({ post, onClick }: CommentButtonProps) {
+  return (
+    <button onClick={onClick} className="flex items-center gap-2">
+      <MessageSquare className="size-5" />
+      <span className="text-sm font-medium tabular-nums">
+        {post._count.comments}{" "}
+        <span className="hidden sm:inline">comments</span>
+      </span>
+    </button>
+  );
 }

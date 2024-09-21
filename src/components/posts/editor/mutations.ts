@@ -12,10 +12,11 @@ import { useSession } from "@/app/(main)/SessionProvider";
 // function that updates the feed immediately after posts are created or deleted
 // even if the page is loading
 export function useSubmitPostMutation() {
+  // toast message
   const { toast } = useToast();
-
+  // query client
   const queryClient = useQueryClient();
-
+  // user session
   const { user } = useSession();
 
   // mutation function to update page right after action executes
@@ -67,7 +68,7 @@ export function useSubmitPostMutation() {
       });
 
       toast({
-        description: "Post created",
+        description: "Post createdW",
       });
     },
     onError(error) {
