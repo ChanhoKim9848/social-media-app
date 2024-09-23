@@ -1,9 +1,9 @@
 import { validateRequest } from "@/auth";
 import prisma from "@/lib/prisma";
-import { getPostDataInclude, PostsPage } from "@/lib/types";
+import { notificationsInclude, NotificationsPage } from "@/lib/types";
 import { NextRequest } from "next/server";
 
-// API GET request to fetch posts data on for-you feed
+// API GET request to get notification data
 export async function GET(req: NextRequest) {
   try {
     const cursor = req.nextUrl.searchParams.get("cursor") || undefined;
@@ -14,29 +14,33 @@ export async function GET(req: NextRequest) {
     // authorization check
     const { user } = await validateRequest();
 
-    // user does not eixst, then unauthorized error
+    // user does not eixst, then error
     if (!user) {
       return Response.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // get posts data from db 
-    // and sort them from latest to oldest
-    const posts = await prisma.post.findMany({
-      include: getPostDataInclude(user.id),
+    // get notifications data from db
+    // and display them on the notification list from latest to oldest
+    const notifications = await prisma.notification.findMany({
+      where: {
+        recipientId: user.id,
+      },
+      include: notificationsInclude,
       orderBy: { createdAt: "desc" },
       take: pageSize + 1,
       cursor: cursor ? { id: cursor } : undefined,
     });
 
-    // if posts exist, show the size of posts, else null
-    const nextCursor = posts.length > pageSize ? posts[pageSize].id : null;
+    // next cursor, if notification exists, show the size of notification
+    // else null
+    const nextCursor =
+      notifications.length > pageSize ? notifications[pageSize].id : null;
 
-    // Posts page is shown
-    const data: PostsPage = {
-      posts: posts.slice(0, pageSize),
+    // notification page is shown
+    const data: NotificationsPage = {
+      notifications: notifications.slice(0, pageSize),
       nextCursor,
     };
-
     // return success response
     return Response.json(data);
   } catch (error) {

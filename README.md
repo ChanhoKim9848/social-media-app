@@ -19,5 +19,9 @@
 ##### [Edit profile (Crop image, upload image) - 15/09/24](https://blog.naver.com/detol3953/223585524143)
 ##### [Post image and videos - 16/09/24](https://blog.naver.com/detol3953/223586332662)
 ##### [Post detail page - 18/09/24](https://blog.naver.com/detol3953/223587728637)
+##### [Post likes and bookmarks features - 19/09/24](https://blog.naver.com/detol3953/223589430215)
+##### [Comments function - 21/09/24](https://blog.naver.com/detol3953/223591548927)
+##### [Notification functionality and page - 23/09/24](https://blog.naver.com/detol3953/223593889166)
 
-https://youtu.be/1nKETjqJluI?t=11557
+
+https://youtu.be/1nKETjqJluI?t=19593
