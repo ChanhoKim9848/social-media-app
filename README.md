@@ -23,5 +23,4 @@
 ##### [Comments function - 21/09/24](https://blog.naver.com/detol3953/223591548927)
 ##### [Notification functionality and page - 23/09/24](https://blog.naver.com/detol3953/223593889166)
 
-
-https://youtu.be/1nKETjqJluI?t=19593
+https://youtu.be/1nKETjqJluI?t=24956

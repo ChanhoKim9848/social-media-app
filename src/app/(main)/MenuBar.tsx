@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import { Bell, Bookmark, Home, Mail } from "lucide-react";
 import Link from "next/link";
 import NotificationsButton from "./NotificationsButton";
+import MessagesButton from "./MessagesButton";
+import streamServerClient from "@/lib/stream";
 
 interface MenubarProps {
   className?: string;
@@ -16,14 +18,16 @@ export default async function Menubar({ className }: MenubarProps) {
 
   // if user is not logged in, return null
   if (!user) return null;
-
   // unread notification count from database
-  const unreadNotificationCount = await prisma.notification.count({
-    where: {
-      recipientId: user.id,
-      read: false,
-    },
-  });
+  const [unreadNotificationsCount, unreadMessagesCount] = await Promise.all([
+    prisma.notification.count({
+      where: {
+        recipientId: user.id,
+        read: false,
+      },
+    }),
+    (await streamServerClient.getUnreadCount(user.id)).total_unread_count,
+  ]);
 
   return (
     <div className={className}>
@@ -41,33 +45,10 @@ export default async function Menubar({ className }: MenubarProps) {
       </Button>
       {/* fetch notifications button that has unread notifications count */}
       <NotificationsButton
-        initialState={{ unreadCount: unreadNotificationCount }}
+        initialState={{ unreadCount: unreadNotificationsCount }}
       />
-      {/* Notification button */}
-      <Button
-        variant="ghost"
-        className="flex items-center justify-start gap-3"
-        title="Notifications"
-        asChild
-      >
-        <Link href="/notifications">
-          <Bell />
-          <span className="hidden lg:inline">Notifications</span>
-        </Link>
-      </Button>
-
       {/* Messages button */}
-      <Button
-        variant="ghost"
-        className="flex items-center justify-start gap-3"
-        title="Messages"
-        asChild
-      >
-        <Link href="/messages">
-          <Mail />
-          <span className="hidden lg:inline">Messages</span>
-        </Link>
-      </Button>
+      <MessagesButton initialState={{ unreadCount: unreadMessagesCount }} />
 
       {/* Bookmarks button */}
       <Button

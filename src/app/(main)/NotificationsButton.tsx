@@ -11,7 +11,7 @@ interface NotificationsButtonProps {
   initialState: NotificationCountInfo;
 }
 
-// Notifications button
+// Notifications button on the left side bar
 export default function NotificationsButton({
   initialState,
 }: NotificationsButtonProps) {
@@ -23,8 +23,9 @@ export default function NotificationsButton({
         .json<NotificationCountInfo>(),
     initialData: initialState,
     // notification interval
-    // purpose: stop users from sending too many request to the server to fetch the notification count
-    refetchInterval: 10 * 1000,
+    // interval purpose: stop users from sending too many request 
+    // to the server to fetch the notification count
+    refetchInterval: 30 * 1000,
   });
 
   return (
