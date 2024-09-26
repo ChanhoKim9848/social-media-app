@@ -17,6 +17,15 @@ const nextConfig = {
       },
     ],
   },
+  // redirect to hashtag search result after clicking hashtag
+  rewrites: () => {
+    return [
+      {
+        source: "/hashtag/:tag",
+        destination: "/search?q=%23:tag",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

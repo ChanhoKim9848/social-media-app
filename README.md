@@ -24,5 +24,5 @@
 ##### [Notification functionality and page - 23/09/24](https://blog.naver.com/detol3953/223593889166)
 ##### [Message features (stream chat api & sdk) - 25/09/24](https://blog.naver.com/detol3953/223596568522)
 ##### [Google authentication (OAuth2) - 26/09/24](https://blog.naver.com/detol3953/223597829975)
-
+##### [Search function - 26/09/24](https://blog.naver.com/detol3953/223597939059)
 https://youtu.be/1nKETjqJluI?t=27915
