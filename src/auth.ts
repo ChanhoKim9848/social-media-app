@@ -3,6 +3,7 @@ import { Lucia, Session, User } from "lucia";
 import { cookies } from "next/headers";
 import { cache } from "react";
 import prisma from "./lib/prisma";
+import {Google} from 'arctic'
 
 const adapter = new PrismaAdapter(prisma.session, prisma.user);
 
@@ -39,6 +40,13 @@ interface DatabaseUserAttributes {
   googleId: string | null;
 }
 
+// for google authentication
+export const google = new Google(
+  process.env.GOOGLE_CLIENT_ID!,
+  process.env.GOOGLE_CLIENT_SECERT!,
+  `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/callback/google`,
+)
+
 // user validate request
 // This will check for the session cookie, validate it, and set a new cookie if necessary.
 // Make sure to catch errors when setting cookies and wrap the function with cache()
@@ -46,7 +54,6 @@ interface DatabaseUserAttributes {
 
 // CSRF protection should be implemented but Next.js handles it when using form actions
 // (but not for API routes).
-
 export const validateRequest = cache(
   async (): Promise<
     { user: User; session: Session } | { user: null; session: null }

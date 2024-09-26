@@ -71,7 +71,7 @@ export default function LoginForm() {
         />
         {/* Loading button, it shows spinner when it is loading state */}
         <LoadingButton loading={isPending} type="submit" className="w-full">
-          Create account
+          Log in
         </LoadingButton>
       </form>
     </Form>
