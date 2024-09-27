@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import LoginForm from "./LoginForm";
 import Link from "next/link";
-import loginImage from "@/assets/login-image.jpg";
-import Image from "next/image";
 import GoogleSignInButton from "./google/GoogleSignInButton";
+import DynamicImage from "./DynamicImage";
 
 export const metadata: Metadata = {
   title: "Login",
@@ -21,21 +20,19 @@ export default function Page() {
             <div>
 
             </div>
+            {/* login form */}
             <LoginForm />
 
+            {/* Google sign in button */}
             <GoogleSignInButton/>
             
+            {/* sign up button */}
             <Link href="/signup" className="block text-center hover:underline">
               Don&apos;t have an account? Sign up
             </Link>
           </div>
         </div>
-
-        <Image
-          src={loginImage}
-          alt=""
-          className="hidden w-1/2 object-cover md:block"
-        />
+        <DynamicImage/>
       </div>
     </main>
   );

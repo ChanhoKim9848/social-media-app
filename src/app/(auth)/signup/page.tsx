@@ -1,8 +1,8 @@
 import { Metadata } from "next";
-import Image from "next/image";
-import signupImage from "@/assets/signup-image.jpg";
 import Link from "next/link";
 import SignUpForm from "./SignUpForm";
+import DynamicImage from "./DynamicImage";
+
 
 export const metadata: Metadata = {
   title: "Sign up",
@@ -27,11 +27,7 @@ export default function Page() {
           </div>
         </div>
         {/* image on the right */}
-        <Image
-          src={signupImage}
-          alt=""
-          className="hidden w-1/2 object-cover md:block"
-        />
+        <DynamicImage/>
       </div>
     </main>
   );
