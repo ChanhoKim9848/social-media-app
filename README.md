@@ -7,7 +7,7 @@ HTML5, CSS3, JavaScript, TypeScript
 ### Libraries and platforms
 Vercel, Shadcn UI, Prisma, PostgreDB, NextJS, TanStack query, Google Cloud, Uploadthing, Stream chat
 
-
+#
 ### Project Blog
 
 ##### [Project IDE, Database setup (Vercel PostgresDB + Prisma ORM) - 23/08/24](https://blog.naver.com/detol3953/223558463720)
