@@ -1,5 +1,8 @@
 # Social-Media App Project
 
+made this website to communicate with people, sharing their lifestyles with posts and comments. 
+Also, direct message features that users can have private or group chats.
+
 ### Programming Languages
 
 HTML5, CSS3, JavaScript, TypeScript
@@ -28,6 +31,12 @@ Database: PostgreDB, TanStack query, Google Cloud, Uploadthing, GetStream.IO (St
 
 
 #
+
+
+
+
+
+
 ### Project Blog
 
 ##### [Project IDE, Database setup (Vercel PostgresDB + Prisma ORM) - 23/08/24](https://blog.naver.com/detol3953/223558463720)
