@@ -1,5 +1,5 @@
 # Social Media Project
-#
+
 ### Programming Languages
 #
 HTML5, CSS3, JavaScript, TypeScript
