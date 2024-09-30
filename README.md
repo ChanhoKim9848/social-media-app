@@ -1,4 +1,4 @@
-# Social Media Project
+# Social-Media App Project
 
 ### Programming Languages
 #
