@@ -1,7 +1,27 @@
 # Social-Media App Project
 
-made this website to communicate with people, sharing their lifestyles with posts and comments. 
-Also, direct message features that users can have private or group chats.
+### Overview
+
+Key Features:
+User Authentication: Users can register and log in using their email or Google accounts.
+
+Home Page: Upon logging in, users are greeted with a home page featuring a left-side menu bar with buttons for Home, Notifications, Messages, and Bookmarks.
+
+Feed: The central area displays posts from users that the logged-in user is following. Each post includes like and comment counts, allowing users to like/unlike and comment on them.
+
+Bookmarks: Users can bookmark posts for easy access later. Bookmarked posts can be viewed by clicking the Bookmarks button in the menu.
+
+Post Creation: Users can create posts that include text, images, and videos (up to five files).
+
+People You May Know: A section on the right suggests users to follow, based on registered members of the app.
+
+Trending Topics: Below the suggestions, there’s a section highlighting trending topics, showcasing the count of certain hashtags used in user posts.
+
+Search Functionality: At the top of the page, a search bar allows users to search for posts by keywords.
+
+User Profiles: Each user has a personal account with a profile image (avatar) and biography. Users can access their profile pages by clicking on their names or avatars.
+
+
 
 ### Programming Languages
 
