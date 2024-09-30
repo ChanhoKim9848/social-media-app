@@ -1,7 +1,7 @@
 # Social-Media App Project
 
 ### Programming Languages
-#
+
 HTML5, CSS3, JavaScript, TypeScript
 
 #
