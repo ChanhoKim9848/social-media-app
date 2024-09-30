@@ -4,9 +4,9 @@
 
 HTML5, CSS3, JavaScript, TypeScript
 
-#
+
 ### Libraries and platforms
-#
+
 
 ### Frontend part:
 UI and layout : Shadcn UI, tailwindCSS
