@@ -1,9 +1,10 @@
 # Social Media Project
 
-# Programming Language
-JavaScript, TypeScript
+### Programming Language
 
-# Libraries and platforms
+HTML5, CSS3, JavaScript, TypeScript
+
+### Libraries and platforms
 Vercel, Shadcn UI, Prisma, PostgreDB, NextJS, TanStack query, Google Cloud, Uploadthing, Stream chat
 
 
