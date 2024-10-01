@@ -31,12 +31,11 @@ At the top of the page, a search bar allows users to search for posts by keyword
 ### User Profiles:
 Each user has a personal account with a profile image (avatar) and biography. Users can access their profile pages by clicking on their names or avatars.
 
-
 ### Programming Languages
 
 HTML5, CSS3, JavaScript, TypeScript
 
-
+#
 
   ### Technologies (Libraries, Frameworks and platforms)
   
