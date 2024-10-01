@@ -2,7 +2,7 @@
 
 ## Overview
 
-## Key Features:
+##### Key Features:
 
 ### User Authentication:
 Users can register and log in using their email or Google accounts.
