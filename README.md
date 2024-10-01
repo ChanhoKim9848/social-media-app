@@ -2,7 +2,8 @@
 
 ### Overview
 
-Key Features:
+##### Key Features:
+
 User Authentication: Users can register and log in using their email or Google accounts.
 
 Home Page: Upon logging in, users are greeted with a home page featuring a left-side menu bar with buttons for Home, Notifications, Messages, and Bookmarks.
@@ -28,7 +29,22 @@ User Profiles: Each user has a personal account with a profile image (avatar) an
 HTML5, CSS3, JavaScript, TypeScript
 
 
+
 ### Libraries and platforms
+- React
+- NextJS
+- Vercel
+- Google OAuth2
+- Uploadthing
+- Stream chat (GetStream.IO)
+- TanStack React Query
+- Lucia Auths
+- TailwindCSS
+- Shadcn UI
+- Postgre database with Prisma
+- TipTap Editor
+
+
 
 
 ### Frontend part:
@@ -50,11 +66,9 @@ Database: PostgreDB, TanStack query, Google Cloud, Uploadthing, GetStream.IO (St
 - Create comments
 
 
+
+
 #
-
-
-
-
 
 
 ### Project Blog
