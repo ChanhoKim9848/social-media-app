@@ -29,63 +29,62 @@ HTML5, CSS3, JavaScript, TypeScript
 
 
 
-  ### Technologies
+  ### Technologies (Libraries, Frameworks and platforms)
   
- Libraries and Frameworks Used
-React
+### React
 React is a JavaScript library developed by Facebook that allows us to create dynamic and interactive web applications.
 
 I chose React for my app because it is one of the most widely used web frameworks globally. Popular applications like Netflix, Airbnb, WhatsApp Web, and Discord are built with React. Its features make it ideal for building scalable, responsive, and efficient applications.
 
-Component-Based Architecture
+1. Component-Based Architecture
 React allows developers to break down the UI into small, reusable components, making it easier to manage and maintain the codebase.
 
-Efficient Performance
+2. Efficient Performance
 React uses the Virtual DOM, minimizing the performance cost of updating the real DOM. This leads to better performance, especially in dynamic applications, as it updates only the necessary components.
 
-Rich Ecosystem and Community Support
+3. Rich Ecosystem and Community Support
 React boasts a large ecosystem of libraries, tools, and resources. This makes it easy to find solutions to development challenges through communities and resources like Google or React’s official documentation. State management tools such as Redux and Context API, along with frameworks like Next.js for server-side rendering (SSR), make it easier to build full-stack applications.
 
-Supports Both Web and Mobile Development
+4. Supports Both Web and Mobile Development
 React's ecosystem includes React Native, which allows developers to build both web and mobile applications with shared code.
 
-Seamless Integration with Backend Technologies
+5. Seamless Integration with Backend Technologies
 React can be combined with backend technologies like Node.js, enabling developers to work with JavaScript on both the front-end and back-end. Frameworks like Next.js enable SSR and API routes, bridging the gap between front-end and back-end development.
 
-Simplified File Structure
+6. Simplified File Structure
 React allows combining HTML, CSS, and JavaScript into a single file, reducing the need for separate CSS or JavaScript files and making development more streamlined.
 
-Next.js
+### Next.js
 Next.js is a React framework that enables server-side rendering (SSR) and static site generation (SSG). It enhances React by providing key features like SSR, API routes, and automatic routing, allowing for better SEO and performance. It also helps build full-stack applications by enabling you to create both front-end and backend routes within the same project.
 
-Vercel
+### Vercel
 Vercel is a cloud platform that hosts static sites and serverless functions. It is the platform that powers Next.js, making it easy to deploy full-stack applications with minimal configuration. Vercel is optimized for front-end frameworks, making it a seamless choice for deploying Next.js applications.
 
-Google OAuth 2.0
+### Google OAuth 2.0
 Google OAuth 2.0 is a secure authentication method that allows users to log in using their Google accounts. It simplifies user authentication and ensures secure access to protected resources.
 
-Uploadthing
+### Uploadthing
 Uploadthing is a library that simplifies file uploads in web applications. It integrates with cloud storage solutions, providing a smooth way for users to upload media like images and videos.
 
-Stream Chat (GetStream.io)
+### Stream Chat (GetStream.io)
 Stream Chat provides real-time messaging and chat functionality. It is highly scalable and customizable, making it perfect for social media applications. Stream Chat enables features like real-time messaging, threads, and user presence.
 
-TanStack React Query
+### TanStack React Query
 TanStack React Query is a data-fetching library for React that simplifies working with server state. It manages caching, synchronizing, and updating server data in real-time, making it a powerful tool for fetching, caching, and managing API data in React applications.
 
-Lucia Auth
+### Lucia Auth
 Lucia Auth is a simple and modern authentication library for Node.js applications. It provides a clean and flexible way to handle user authentication with support for various strategies, including password-based and OAuth authentication.
 
-TailwindCSS
+### TailwindCSS
 TailwindCSS is a utility-first CSS framework that allows developers to build custom designs quickly. Instead of writing custom CSS, developers can use pre-defined utility classes directly in their HTML or JSX, speeding up the styling process and reducing CSS bloat.
 
-Shadcn UI
+### Shadcn UI
 Shadcn UI is a modern, customizable UI component library. It provides pre-built, accessible components, making it easier to build consistent UIs across an application. It integrates seamlessly with TailwindCSS, offering a flexible design system.
 
-PostgreSQL Database with Prisma
+### PostgreSQL Database with Prisma
 PostgreSQL is a powerful, open-source relational database system. I used Prisma as the ORM (Object-Relational Mapping) tool to interact with the PostgreSQL database. Prisma simplifies database operations, making it easier to query, update, and manage database records in a type-safe way.
 
-TipTap Editor
+### TipTap Editor
 TipTap Editor is a rich text editor built on top of ProseMirror. It allows users to write and format text, supporting various customization options like embedding media, links, and more. TipTap is highly extensible and ideal for creating a feature-rich text editor experience.
 
 
