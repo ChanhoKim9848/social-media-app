@@ -47,30 +47,6 @@ HTML5, CSS3, JavaScript, TypeScript
 
 
 
-### Frontend part:
-UI and layout : Shadcn UI, tailwindCSS
-
-### Backend part:
-Deployment: Vercel
-Database: PostgreDB, TanStack query, Google Cloud, Uploadthing, GetStream.IO (Stream chat)
-
-### Used libraries: 
-
-
-### Features
-- Message with users
-- Follow / Unfollow users
-- Create posts with texts, videos and images.
-- Update user profile
-- Like / Unlike post
-- Create comments
-
-
-
-
-#
-
-
 ### Project Blog
 
 ##### [Project IDE, Database setup (Vercel PostgresDB + Prisma ORM) - 23/08/24](https://blog.naver.com/detol3953/223558463720)
