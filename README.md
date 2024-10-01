@@ -1,6 +1,6 @@
 # Social-Media App Project
 
-### Overview
+## Overview
 
 ## Key Features:
 
