@@ -110,6 +110,12 @@ PostgreSQL is a powerful, open-source relational database system. I used Prisma 
 TipTap Editor is a rich text editor built on top of ProseMirror. It allows users to write and format text, supporting various customization options like embedding media, links, and more. TipTap is highly extensible and ideal for creating a feature-rich text editor experience.
 
 
+#
+### TO-DO LIST
+- Delete or Clean messages
+- Block users
+- Edit Post
+- Crop Image dealing with too large image
 
 #
 ### Project Blog
