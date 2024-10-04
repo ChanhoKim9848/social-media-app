@@ -29,6 +29,11 @@ At the top of the page, a search bar allows users to search for posts by keyword
 ### User Profiles:
 Each user has a personal account with a profile image (avatar) and biography. Users can access their profile pages by clicking on their names or avatars.
 
+### Notifications
+Users receive notifications for direct messages and interactions with their posts, such as comments and likes from other users. The notification count is displayed in both the notifications menu and the messages tab (for direct messages).
+
+
+#
 ### Programming Languages
 
 HTML5, CSS3, JavaScript, TypeScript
