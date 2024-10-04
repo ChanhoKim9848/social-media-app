@@ -111,11 +111,12 @@ TipTap Editor is a rich text editor built on top of ProseMirror. It allows users
 
 
 #
-### TO-DO LIST
+### Needs to be improved
 - Delete or Clean messages
 - Block users
-- Edit Post
-- Crop Image dealing with too large image
+- Edit Posts
+- Fixing a bug when crop too large image
+- Fix Application error: a client-side exception has occurred (see the browser console for more information).
 
 #
 ### Project Blog
