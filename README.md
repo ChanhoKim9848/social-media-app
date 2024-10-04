@@ -6,16 +6,15 @@
 Users can register and log in using their email or Google accounts.
 
  - Lucia authentication
-For a default authentication, we used a Lucia authentication library. The Lucia auth is easier to use than other authentication libraries
-such as firebase auth, OAuth, NextAuth since it has beginner friendly documentations.
-Lucia provides a straightforward API that allows developers to handle authentication without the complexity and customize UI and
-also strong authentication methods like password hashing (bcrypt) and token-based authentication (JWT), with minimal boilerplate code.
+For sign in, we used a Lucia authentication library. The Lucia auth is easier to use than other authentication libraries
+such as Firebase auth, OAuth, NextAuth since it has beginner friendly documentations.
+Lucia provides a straightforward API that allows developers to handle authentication without the complexity and customize design and
+provides strong authentication methods like password hashing (bcrypt) and token-based authentication (JWT), with minimal boilerplate code.
 
 - Google OAuth 2.0
-With just a few lines of code, you can quickly integrate a secure authentication system into your app, saving time and effort compared to building complex authentication mechanisms from scratch. Since many users already have Google accounts, signing in via Google is straightforward, allowing users to log in easily with just one click. Additionally, Google Cloud Authentication simplifies the process of accessing user data, making sign-ups and logins seamless and efficient.
-
-
-
+For google sign in, we used google oauth 2.0 since it needs a few lines of code which can quickly integrate a secure authentication system into the app,
+saving time and effort compared to building complex authentication mechanisms from scratch.
+Google Cloud Authentication simplifies the process of accessing user data, making sign-ups and logins seamless and efficient.
 
 ### Home Page:
 Upon logging in, users are greeted with a home page featuring a left-side menu bar with buttons for Home, Notifications, Messages, and Bookmarks.
