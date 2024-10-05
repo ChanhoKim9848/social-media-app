@@ -6,10 +6,10 @@
 Users can register and log in using their email or Google accounts.
 
  - Lucia authentication
+ 
 For sign in, we used a Lucia authentication library. The Lucia auth is easier to use than other authentication libraries
-such as Firebase auth, OAuth, NextAuth since it has beginner friendly documentations.
-Lucia provides a straightforward API that allows developers to handle authentication without the complexity and customize design and
-provides strong authentication methods like password hashing (bcrypt) and token-based authentication (JWT), with minimal boilerplate code.
+such as Firebase auth, OAuth, NextAuth since it has beginner friendly documentations a straightforward API that allows developers to handle authentication without the complexity and customize design.
+It also provides strong authentication methods like password hashing (bcrypt) and token-based authentication (JWT), with minimal boilerplate code.
 
 - Google OAuth 2.0
 For google sign in, we used google oauth 2.0 since it needs a few lines of code which can quickly integrate a secure authentication system into the app,
@@ -77,7 +77,7 @@ React can be combined with backend technologies like Node.js, enabling developer
 React allows combining HTML, CSS, and JavaScript into a single file, reducing the need for separate CSS or JavaScript files and making development more streamlined.
 
 ### - Next.js
-Next.js is a React framework that enables server-side rendering (SSR) and static site generation (SSG). It enhances React by providing key features like SSR, API routes, and automatic routing, allowing for better SEO and performance. It also helps build full-stack applications by enabling you to create both front-end and backend routes within the same project.
+Next.js is a React framework that enables server-side rendering (SSR) and static site generation (SSG), which helped creating both front-end and backend routes within the same project.
 
 ### - Vercel
 Vercel is a cloud platform that hosts static sites and serverless functions. It is the platform that powers Next.js, making it easy to deploy full-stack applications with minimal configuration. Vercel is optimized for front-end frameworks, making it a seamless choice for deploying Next.js applications.
@@ -86,25 +86,35 @@ Vercel is a cloud platform that hosts static sites and serverless functions. It 
 Google OAuth 2.0 is a secure authentication method that allows users to log in using their Google accounts. It simplifies user authentication and ensures secure access to protected resources.
 
 ### - Uploadthing
-Uploadthing is a library that simplifies file uploads in web applications. It integrates with cloud storage solutions, providing a smooth way for users to upload media like images and videos.
+Uploadthing is a library that simplifies file uploads in web applications.
+It has its own cloud storage, when user upload images and videos, avatar image files, the files are uploaded to the storage.
+since images and videos have to be saved somewhere.
 
 ### - Stream Chat (GetStream.io)
-Stream Chat provides real-time messaging and chat functionality. It is highly scalable and customizable, making it perfect for social media applications. Stream Chat enables features like real-time messaging, threads, and user presence.
+Stream Chat provides real-time messaging and chat functionality. it is also easy to customize and provides beginner friendly documents making it perfect for social media applications.
+it has features such as real-time messaging, threads, and user presence, and also provides UI which we did not need to make it from scratch.
 
 ### - TanStack React Query
 TanStack React Query is a data-fetching library for React that simplifies working with server state. It manages caching, synchronizing, and updating server data in real-time, making it a powerful tool for fetching, caching, and managing API data in React applications.
+for example, when user create images or update profiles and posts, the page immediately update and display the updates.
 
 ### - Lucia Auth
 Lucia Auth is a simple and modern authentication library for Node.js applications. It provides a clean and flexible way to handle user authentication with support for various strategies, including password-based and OAuth authentication.
 
 ### - TailwindCSS
 TailwindCSS is a utility-first CSS framework that allows developers to build custom designs quickly. Instead of writing custom CSS, developers can use pre-defined utility classes directly in their HTML or JSX, speeding up the styling process and reducing CSS bloat.
+we also used light and darkmode, color of texts, title and font that imported from TailwindCSS documents.
 
 ### - Shadcn UI
 Shadcn UI is a modern, customizable UI component library. It provides pre-built, accessible components, making it easier to build consistent UIs across an application. It integrates seamlessly with TailwindCSS, offering a flexible design system.
 
 ### - PostgreSQL Database with Prisma
-PostgreSQL is a powerful, open-source relational database system. I used Prisma as the ORM (Object-Relational Mapping) tool to interact with the PostgreSQL database. Prisma simplifies database operations, making it easier to query, update, and manage database records in a type-safe way.
+PostgreSQL is a powerful, open-source relational database system. we used Prisma as the ORM (Object-Relational Mapping) tool to interact with the PostgreSQL database. Prisma simplifies database operations, making it easier to query, update, and manage database records in a type-safe way.
+- Prisma
+Prisma's syntax is very clean, readable, and closely aligned with how you think about database relationships.
+Readable Queries: Instead of writing raw SQL queries or dealing with complex ORM-specific methods, Prisma offers an abstraction that is powerful but easy to understand.
+- PostgreSQL
+
 
 ### - TipTap Editor
 TipTap Editor is a rich text editor built on top of ProseMirror. It allows users to write and format text, supporting various customization options like embedding media, links, and more. TipTap is highly extensible and ideal for creating a feature-rich text editor experience.
