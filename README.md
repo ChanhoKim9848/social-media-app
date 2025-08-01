@@ -1,5 +1,10 @@
 # Social-Media App Project
 
+
+### Google Auth 2.0
+
+Redirect url : https://url/api/auth/callback/google
+
 ### Key Features:
 
 ### User Authentication:

@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-
 // client's side, caches the page for 30s
 const nextConfig = {
   experimental: {
@@ -27,5 +26,5 @@ const nextConfig = {
     ];
   },
 };
-
+console.log('UPLOADTHING_APP_ID:', process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID);
 export default nextConfig;
