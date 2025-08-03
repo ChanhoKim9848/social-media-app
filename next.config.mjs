@@ -11,7 +11,12 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: `${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}.ufs.sh`,
-        pathname: `/f/*`, // allow the /f/ path exactly as UploadThing uses it
+        pathname: `/f/*`,
+      },
+      {
+        protocol: "https",
+        hostname: "utfs.io",
+        pathname: `/f/*`,
       },
     ],
   },
