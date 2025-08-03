@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-// client's side, caches the page for 30s
 const nextConfig = {
   experimental: {
     staleTimes: {
@@ -11,20 +10,24 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
+        hostname: `${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}.ufs.sh`,
+        pathname: `/f/*`,
+      },
+      {
+        protocol: "https",
         hostname: "utfs.io",
-        pathname: `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/*`,
+        pathname: `/f/*`,
       },
     ],
   },
-  // redirect to hashtag search result after clicking hashtag
-  rewrites: () => {
-    return [
-      {
-        source: "/hashtag/:tag",
-        destination: "/search?q=%23:tag",
-      },
-    ];
-  },
+  rewrites: () => [
+    {
+      source: "/hashtag/:tag",
+      destination: "/search?q=%23:tag",
+    },
+  ],
 };
-console.log('UPLOADTHING_APP_ID:', process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID);
+
+console.log("UPLOADTHING_APP_ID:", process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID);
+
 export default nextConfig;

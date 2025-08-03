@@ -6,83 +6,72 @@ import { UploadThingError, UTApi } from "uploadthing/server";
 
 const f = createUploadthing();
 
-// file router
 export const fileRouter = {
   avatar: f({
-    // max image size
     image: { maxFileSize: "512KB" },
   })
     .middleware(async () => {
       const { user } = await validateRequest();
-
-      //   if user is not logged in, throw error
       if (!user) throw new UploadThingError("Unauthorized");
-
       return { user };
     })
-
-    // upload image file on Uploadthing
     .onUploadComplete(async ({ metadata, file }) => {
-      const oldAvatarUrl = metadata.user.avatarUrl;
+      try {
+        const oldAvatarUrl = metadata.user.avatarUrl;
 
-      // old avatar handle
-      if (oldAvatarUrl) {
-        const key = oldAvatarUrl.split(
-          `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/`,
-        )[1];
-
-        // delete old avatar after updating
-        await new UTApi().deleteFiles(key);
-      }
-
-      const newAvatarUrl = file.url.replace(
-        "/f/",
-        `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/`,
-      );
-
-      await Promise.all([
-        //   update user avatar image on the database
-        prisma.user.update({
-          where: { id: metadata.user.id },
-          data: {
-            avatarUrl: newAvatarUrl,
-          },
-        }),
-        streamServerClient.partialUpdateUser({
-          id:metadata.user.id,
-          set:{
-            image:newAvatarUrl,
+        if (oldAvatarUrl) {
+          // To delete old file, get key from UploadThing URL starting at '/f/'
+          const key = oldAvatarUrl.split("/f/")[1];
+          if (key) {
+            await new UTApi().deleteFiles(key);
           }
-        })
-      ]);
-      return { avatarUrl: newAvatarUrl };
+        }
+
+        const newAvatarUrl = file.url; // Use UploadThing's exact URL, no replace!
+
+        await prisma.user.update({
+          where: { id: metadata.user.id },
+          data: { avatarUrl: newAvatarUrl },
+        });
+
+        await streamServerClient.partialUpdateUser({
+          id: metadata.user.id,
+          set: { image: newAvatarUrl },
+        });
+
+        return { avatarUrl: newAvatarUrl };
+      } catch (error) {
+        console.error("Avatar upload error:", error);
+        throw new UploadThingError("Failed to process avatar upload");
+      }
     }),
 
-  // media type is image or video
-  // maximum file size and count
   attachment: f({
     image: { maxFileSize: "4MB", maxFileCount: 5 },
     video: { maxFileSize: "64MB", maxFileCount: 5 },
   })
     .middleware(async () => {
       const { user } = await validateRequest();
-
       if (!user) throw new UploadThingError("Unauthorized");
-
-      return {};
+      return { user };
     })
     .onUploadComplete(async ({ file }) => {
-      // store media on uploadthing
-      const media = await prisma.media.create({
-        data: {
-          url: file.url.replace(
-            "/f/",
-            `/a/${process.env.NEXT_PUBLIC_UPLOADTHING_APP_ID}/`,
-          ),
-          type: file.type.startsWith("image") ? "IMAGE" : "VIDEO",
-        },
-      });
-      return { mediaId: media.id };
+      try {
+        // Save exact UploadThing file url (no replace)
+        const newUrl = file.url;
+
+        const media = await prisma.media.create({
+          data: {
+            url: newUrl,
+            type: file.type.startsWith("image") ? "IMAGE" : "VIDEO",
+          },
+        });
+
+        return { mediaId: media.id };
+      } catch (error) {
+        console.error("Media upload error:", error);
+        throw new UploadThingError("Failed to store media");
+      }
     }),
 } satisfies FileRouter;
 
