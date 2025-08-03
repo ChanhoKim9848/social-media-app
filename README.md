@@ -1,15 +1,10 @@
 # Social-Media App Project
 
 
-### Google Auth 2.0
-
-
 
 ### TO-DO List
 
-- fix Avatar image url 
-
-
+- Fix uploadthing
 
 ### Key Features:
 

@@ -68,7 +68,7 @@ export function useSubmitPostMutation() {
       });
 
       toast({
-        description: "Post createdW",
+        description: "Post created",
       });
     },
     onError(error) {
