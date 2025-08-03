@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
     if (existingUser) {
       const session = await lucia.createSession(existingUser.id, {});
       const sessionCookie = lucia.createSessionCookie(session.id);
-      
+
       cookies().set(
         sessionCookie.name,
         sessionCookie.value,
@@ -76,7 +76,7 @@ export async function GET(req: NextRequest) {
         },
       });
     }
-
+    
     const userId = generateIdFromEntropySize(10);
 
     const username = slugify(googleUser.name) + "-" + userId.slice(0, 4);
