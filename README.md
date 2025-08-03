@@ -3,7 +3,13 @@
 
 ### Google Auth 2.0
 
-Redirect url : https://url/api/auth/callback/google
+
+
+### TO-DO List
+
+- fix Avatar image url 
+
+
 
 ### Key Features:
 
