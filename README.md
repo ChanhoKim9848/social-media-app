@@ -6,11 +6,12 @@
 - Stream Chat  
   -- Search user ❌  
   -- Delete conversation ❌  
-  -- Delete or Clean messages
-- Block users
-- Edit Posts
-- Fixing a bug when crop too large image
-- Fix Application error: a client-side exception has occurred (see the browser console for more information).
+  -- Delete or Clean messages ❌
+- Block users ❌
+- Edit Posts ❌
+- Fixing a bug when crop too large image ❌
+- Fix Application error: a client-side exception has occurred (see the browser console for more information). ❌
+- Application error: a client-side exception has occurred (see the browser console for more information). ❌
 
 
 ### SET-UP
@@ -42,9 +43,9 @@ Then Redeploy
 
 ### Useful Commands
 
-<!-- delete prisma tables and push prisma schema again -->
 
 ```bash
+<!-- delete prisma tables and push prisma schema again -->
 npx prisma migrate reset
 npx prisma db push
 
@@ -54,6 +55,10 @@ npx prisma studio
 ```
 
 # Key Features:
+
+### Chat Messages
+
+### Light and Dark Mode
 
 ### User Authentication:
 
@@ -239,3 +244,5 @@ TipTap Editor is a rich text editor built on top of ProseMirror. It allows users
 ##### [Google authentication (OAuth2) - 26/09/24](https://blog.naver.com/detol3953/223597829975)
 
 ##### [Search result function - 26/09/24](https://blog.naver.com/detol3953/223597939059)
+
+##### [Bench Marking - AUG/04/25](https://blog.naver.com/detol3953/223958071073)
