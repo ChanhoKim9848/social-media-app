@@ -1,8 +1,9 @@
 # Social-Media App Project
 
-![App Screenshot](src/assets/BENCHMARKING.png)
-![App Screenshot](src/assets/BENCHMARKING.png)
-![App Screenshot](src/assets/BENCHMARKING.png)
+<img src="src/assets/BENCHMARKING.png" alt="App Screenshot 1" width="200" height="70"/>
+<img src="src/assets/BENCHMARKING2.png" alt="App Screenshot 2" width="200" height="70"/>
+<img src="src/assets/BENCHMARKING3.png" alt="App Screenshot 3" width="200" height="70"/>
+
 
 #
 
