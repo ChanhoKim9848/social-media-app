@@ -4,8 +4,14 @@
 
 - Fix uploadthing ✔  
 - Stream Chat  
-  -- search user ❌  
-  -- delete conversation ❌  
+  -- Search user ❌  
+  -- Delete conversation ❌  
+  -- Delete or Clean messages
+- Block users
+- Edit Posts
+- Fixing a bug when crop too large image
+- Fix Application error: a client-side exception has occurred (see the browser console for more information).
+
 
 ### SET-UP
 
@@ -45,6 +51,7 @@ npx prisma db push
 
  <!-- vercel database GUI -->
 npx prisma studio
+```
 
 # Key Features:
 
@@ -186,18 +193,6 @@ PostgreSQL is a powerful, open-source relational database system. we used Prisma
 ### - TipTap Editor
 
 TipTap Editor is a rich text editor built on top of ProseMirror. It allows users to write and format text, supporting various customization options like embedding media, links, and more. TipTap is highly extensible and ideal for creating a feature-rich text editor experience.
-
-#
-
-### Needs to be improved
-
-- Delete or Clean messages
-- Block users
-- Edit Posts
-- Fixing a bug when crop too large image
-- Fix Application error: a client-side exception has occurred (see the browser console for more information).
-
-#
 
 ### Project Blog
 
