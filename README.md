@@ -1,5 +1,11 @@
 # Social-Media App Project
 
+![App Screenshot](assets/BENCHMARKING.png)
+![App Screenshot](assets/BENCHMARKING2.png)
+![App Screenshot](assets/BENCHMARKING3.png)
+
+#
+
 ### TO-DO List
 
 - Fix uploadthing ✔  
