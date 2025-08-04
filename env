@@ -1,0 +1,43 @@
+# Parameters for Vercel Database
+# Go to the project and go to storage
+# Create database and in browse storage click Neon
+# and create database
+# from the created database, you can see .env.local 
+# and copy and paste 
+# Parameters for Vercel Postgres Templates something look like below
+POSTGRES_URL=
+POSTGRES_URL_NON_POOLING=
+POSTGRES_USER=
+POSTGRES_HOST=
+POSTGRES_PASSWORD=
+POSTGRES_DATABASE=
+POSTGRES_URL_NO_SSL=
+POSTGRES_PRISMA_URL=
+
+# Google OAuth 2.0
+# Get from https://console.cloud.google.com/apis/credentials
+# Make OAuth 2.0 Client ID
+# Add Redirection URI
+# https://your_vercel_app_url/api/auth/callback/google
+# For local environment: http://localhost:3000/api/auth/callback/google
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+# UploadThing secret key for uploads
+# get from https://uploadthing.com/dashboard
+UPLOADTHING_SECRET=
+NEXT_PUBLIC_UPLOADTHING_APP_ID=
+
+# Stream
+# Login to getstreamchat.io
+# go to https://dashboard.getstream.io/organization/
+# Create App and Environment should be set to production
+NEXT_PUBLIC_STREAM_KEY=
+STREAM_SECRET=
+
+# Others
+# CRON_SECRET can be anything just type whatever you want
+CRON_SECRET=
+# This should be deployed app url: https://your_vercel_app_url
+# For your local environment: http://localhost:3000
+NEXT_PUBLIC_BASE_URL=
