@@ -1,8 +1,8 @@
 # Social-Media App Project
 
-![App Screenshot](assets/BENCHMARKING.png)
-![App Screenshot](assets/BENCHMARKING2.png)
-![App Screenshot](assets/BENCHMARKING3.png)
+![App Screenshot](src/assets/BENCHMARKING.png)
+![App Screenshot](src/assets/BENCHMARKING.png)
+![App Screenshot](src/assets/BENCHMARKING.png)
 
 #
 
