@@ -2,41 +2,46 @@
 
 ### TO-DO List
 
-- Fix uploadthing ✔
-- Stream Chat
-  -- search user ❌
-  -- delete conversation ❌
+- Fix uploadthing ✔  
+- Stream Chat  
+  -- search user ❌  
+  -- delete conversation ❌  
 
 ### SET-UP
 
-- git clone https://github.com/ChanhoKim9848/social-media-app.git
-- .env file should be created and follow the structure from env file
+- git clone https://github.com/ChanhoKim9848/social-media-app.git  
+- Create a `.env` file and follow the instructions from the env file  
 
 ### Deployment
 
-Go to Overview in your project on Vercel
-Add New Project
-Import Git Repository (social-media-app)
+Go to **Overview** in your project on Vercel  
+Add New Project  
+Import Git Repository (`social-media-app`)
 
--- Framework Preset:
-Next.js
--- Build and Output Settings
-Install Command: npm install --legacy-peer-deps
+**Framework Preset:**  
+Next.js  
 
-Node.js Version should be at least 20. or above
-Put .env files into Enviroment Variables and deploy
-After deployed, we will see domain looks like "your-vercel-app-uri.vercel.app"
-Go back to Environment Variables in Project Settings
-Put "NEXT_PUBLIC_BASE_URL" in Key
-Put "https://your-app-uri.vercel.app"
-And Redeploy
+**Build and Output Settings:**  
+Install Command: `npm install --legacy-peer-deps`  
+
+Node.js Version should be at least 20 or above  
+Put `.env` files into Environment Variables and deploy  
+
+After deployed, you will see a domain like `your-vercel-app-uri.vercel.app`  
+Go back to Environment Variables in Project Settings  
+Add:  
+- Key: `NEXT_PUBLIC_BASE_URL`  
+- Value: `https://your-app-uri.vercel.app`  
+Then Redeploy
 
 ### Useful Commands
 
- <!-- delete prisma tables and push prisma schema again -->
+<!-- delete prisma tables and push prisma schema again -->
 
+```bash
 npx prisma migrate reset
 npx prisma db push
+
 
  <!-- vercel database GUI -->
 npx prisma studio
