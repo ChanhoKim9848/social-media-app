@@ -1,8 +1,12 @@
 # Social-Media App Project
 
-<img src="src/assets/BENCHMARKING.png" alt="App Screenshot 1" width="200" height="70"/>
-<img src="src/assets/BENCHMARKING2.png" alt="App Screenshot 2" width="200" height="70"/>
-<img src="src/assets/BENCHMARKING3.png" alt="App Screenshot 3" width="200" height="70"/>
+<p align="center">
+  <img src="src/assets/BENCHMARKING.png" alt="App Screenshot 1" width="400" height="200"/>
+  <br/>
+  <img src="src/assets/BENCHMARKING2.png" alt="App Screenshot 2" width="400" height="200"/>
+  <br/>
+  <img src="src/assets/BENCHMARKING3.png" alt="App Screenshot 3" width="400" height="200"/>
+</p>
 
 
 #
