@@ -1,5 +1,88 @@
 # Social-Media App Project
 
+# 🌐 Social Media App 프로젝트
+
+<p align="center">
+  <img src="src/assets/BENCHMARKING.png" alt="앱 스크린샷 1" width="550" height="300"/>
+  <br/>
+  <img src="src/assets/BENCHMARKING2.png" alt="앱 스크린샷 2" width="550" height="300"/>
+  <br/>
+  <img src="src/assets/BENCHMARKING3.png" alt="앱 스크린샷 3" width="550" height="300"/>
+</p>
+
+---
+
+## 프로젝트 개요
+**Social Media App**은 React, Next.js, Node.js, Express, MongoDB, Clerk 등 최신 기술 스택을 활용한 **풀스택 SNS 웹앱**입니다.  
+회원가입/로그인, 게시물 CRUD, 댓글, 좋아요, 북마크, 실시간 채팅 등 실제 SNS에서 사용하는 기능들을 구현하여 **풀스택 개발 경험**을 쌓기 위한 프로젝트입니다.  
+
+---
+
+## 주요 기능
+
+### 📝 사용자 인증
+- **이메일/Google OAuth 로그인**
+- Lucia Auth 라이브러리를 사용하여 비밀번호 해싱과 JWT 기반 인증 제공
+- 안전하고 간단한 인증 시스템 구축
+
+### 🏠 홈 화면
+- 좌측 메뉴: 홈, 알림, 메시지, 북마크
+- 사용자가 팔로우한 사람들의 게시물을 피드 형식으로 표시
+
+### 📌 게시물
+- 글, 이미지, 동영상(최대 5개) 업로드 가능
+- 좋아요, 댓글, 북마크 기능 지원
+- 피드 실시간 업데이트 (React Query 활용)
+
+### 💬 실시간 채팅
+- Stream Chat API 사용
+- 사용자 간 1:1 메시지 전송
+- 읽음 표시, 스레드 지원
+
+### 🔎 탐색 및 팔로우
+- 검색 기능: 사용자 및 게시물 검색 가능
+- 팔로우 추천: "People You May Know" 섹션 제공
+- 트렌딩 해시태그 표시
+
+### 🌙 다크모드 / 라이트모드
+- TailwindCSS와 Shadcn UI 활용
+- 사용자 경험을 높이는 테마 전환
+
+### 👤 사용자 프로필
+- 프로필 이미지, 소개글, 게시물 목록 확인
+- 프로필 편집 기능 (사진 업로드, 이미지 크롭 지원)
+
+### 🔔 알림
+- 게시물 상호작용(좋아요, 댓글) 및 DM 알림 표시
+
+---
+
+## 기술 스택
+
+### 🔹 언어
+HTML5, CSS3, JavaScript, TypeScript
+
+### 🔹 프레임워크 & 라이브러리
+React, Next.js, TailwindCSS, Shadcn UI, React Query, TipTap Editor
+
+### 🔹 백엔드 & DB
+Node.js, Express, Prisma ORM, PostgreSQL, Vercel
+
+### 🔹 인증
+Lucia Auth, Google OAuth 2.0
+
+### 🔹 기타
+Uploadthing(파일 업로드), Stream Chat(실시간 채팅)
+
+---
+
+## 설치 및 실행
+```bash
+git clone https://github.com/ChanhoKim9848/social-media-app.git
+cd social-media-app
+npm install --legacy-peer-deps
+
+
 <p align="center">
   <img src="src/assets/BENCHMARKING.png" alt="App Screenshot 1" width="550" height="300"/>
   <br/>
