@@ -1,5 +1,3 @@
-# Social-Media App Project
-
 # 🌐 Social Media App 프로젝트
 
 <p align="center">
