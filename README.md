@@ -79,7 +79,7 @@ Uploadthing(파일 업로드), Stream Chat(실시간 채팅)
 git clone https://github.com/ChanhoKim9848/social-media-app.git
 cd social-media-app
 npm install --legacy-peer-deps
-
+```
 
 <br><br>
 
