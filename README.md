@@ -81,6 +81,8 @@ cd social-media-app
 npm install --legacy-peer-deps
 
 
+<br><br>
+
 <p align="center">
   <img src="src/assets/BENCHMARKING.png" alt="App Screenshot 1" width="550" height="300"/>
   <br/>
